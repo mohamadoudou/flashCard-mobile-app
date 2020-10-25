@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
 function mapStateToProps({ decks }, { route }) {
     const deckId = route.params.title
     const deck = decks ? decks[deckId] : {}
-    console.log('deck passed', deck)
     return {
         deck
     }

@@ -1,8 +1,8 @@
-import React from 'react'
 import { AsyncStorage ,Platform} from 'react-native'
 import  * as Permissions from 'expo-permissions'
 import * as Notifications from 'expo-notifications'
 import Constants from 'expo-constants'
+import { NOTIFICATIONS } from 'expo-permissions'
 const MOBILEFLASHCARD='mobileFlashCard:key'
 const NOTIFICATIONS_KEY='mobileFalshCard:notifications'
 
@@ -36,7 +36,6 @@ _storeData = async () => {
         MOBILEFLASHCARD,
         JSON.stringify(decks)
     )
-    alert ('data stored')
     }catch(e){
         alert('Failed to save your data to the storage')
     }
@@ -63,14 +62,6 @@ export const _getData=async()=>{
     return JSON.parse(decks)
 }
 
-// export function getDecks() {
-//     _storeData()
-//      let decks={}
-//     _getData()
-//     .then((data)=>decks=data)
-//     console.log('retreive data :',decks)
-//     return decks
-// }
 
 export function getDeck(id) {
     return decks[id]
@@ -154,19 +145,19 @@ Notifications.scheduleNotificationAsync({
             body: "Don't forget to do your Quiz today",
             data: { data: 'goes here' },
         },
-        trigger
+         trigger
         // trigger:{
-        //     seconds:2,
-        //     repeats:true,
+        //     seconds:30,
+        //     repeats:false,
         // },    
     })
 }
 
 export const clearNotifications=async ()=>{
     await AsyncStorage.removeItem(NOTIFICATIONS_KEY)
+    .then( Notifications.cancelAllScheduledNotificationsAsync())
     askNotification()
     await AsyncStorage.getItem(NOTIFICATIONS_KEY)
-    
 }
 
  export const askNotification=async ()=>{
@@ -175,10 +166,10 @@ export const clearNotifications=async ()=>{
         const notificationAdded =await AsyncStorage.getItem(NOTIFICATIONS_KEY)
        
         if(notificationAdded===null){
+        Notifications.cancelAllScheduledNotificationsAsync()
         setNotifications()
         await AsyncStorage.setItem(NOTIFICATIONS_KEY,JSON.stringify(true))
         const resetnot =await AsyncStorage.getItem(NOTIFICATIONS_KEY)
-        console.log(resetnot)
         }
     }else{console.log ('Notification permission denied')}
 }

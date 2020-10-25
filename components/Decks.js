@@ -1,8 +1,9 @@
 import React,{useEffect} from 'react'
-import {View,Text,StyleSheet,FlatList} from 'react-native'
+import {View,StyleSheet,FlatList} from 'react-native'
 import {connect} from 'react-redux'
 import {receiveDecksData} from '../actions/deck'
 import Deck from './Deck'
+
 function Decks(props){
 
     useEffect(()=>{
@@ -42,7 +43,6 @@ const styles=StyleSheet.create({
 
 function mapStateToProps({decks}){
     const deckIds=decks?Object.keys(decks):[]
-    console.log('decks values in decks components',decks)
     return{
         deckIds,
         decks

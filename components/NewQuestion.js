@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
-import {View,Text,TextInput,StyleSheet, ImagePropTypes} from 'react-native'
+import {View,TextInput,StyleSheet} from 'react-native'
 import {addNewCard} from '../actions/deck'
 import ButtonText from './ButtonText'
 
@@ -16,8 +16,6 @@ function NewQuestion(props){
             alert('There is an empty field')
         }
         else{props.dispatch(addNewCard(title,{question,answer}))
-        //update DB
-        //goto home
         onChangeQuestion('')
         onChangeAnswer('')
         props.navigation.goBack()

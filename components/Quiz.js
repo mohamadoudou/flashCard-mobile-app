@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, Button, StyleSheet } from 'react-native'
-import Pie from 'react-native-pie'
 import { ProgressChart } from 'react-native-chart-kit'
 import ButtonText from './ButtonText'
 

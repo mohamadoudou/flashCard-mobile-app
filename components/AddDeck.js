@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { View, Text, TextInput, StyleSheet, ImagePropTypes } from 'react-native'
+import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { addNewDeck } from '../actions/deck'
 import ButtonText from './ButtonText'
 
@@ -63,8 +63,7 @@ const styles = StyleSheet.create({
 })
 
 
-function mapStateToProps({ decks },props) {
-    console.log('adddecks components decks', decks)
+function mapStateToProps({ decks }) {
     return {
         decks
     }
