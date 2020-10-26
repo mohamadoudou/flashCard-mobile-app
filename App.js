@@ -20,7 +20,6 @@ import {askNotification} from './utils/helpers'
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 const handleNotification = () => {
-  console.warn('ok! got your notif');
 };
 
 const Tabs = () => {

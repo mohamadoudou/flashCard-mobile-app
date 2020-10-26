@@ -67,18 +67,16 @@ function Quiz({ deck, questions, navigation }) {
     }
     else {
         const data = {
-            labels: ["correct answer"], // optional
+            labels: ["correct answer"], 
             data: [correctAnswer/questions.length]
           }
           const chartConfig = {
             backgroundGradientFrom: "white",
-            //backgroundGradientFromOpacity: 0,
             backgroundGradientTo: "white",
-            //backgroundGradientToOpacity: 0.5,
             color: (opacity = 1) => `rgba(30,130 ,76 , ${opacity})`,
-            strokeWidth: 1, // optional, default 3
+            strokeWidth: 1, 
             barPercentage: 0.7,
-            useShadowColorFromDataset: false // optional
+            useShadowColorFromDataset: false 
           };
         return (
             <View style={styles.quizContainer}>
